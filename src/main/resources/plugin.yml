@@ -1,0 +1,8 @@
+name: Teams
+version: '${project.version}'
+main: teams.MainTeams
+api-version: 1.18
+
+commands:
+  +vytvorTeleportera:
+  +konec:

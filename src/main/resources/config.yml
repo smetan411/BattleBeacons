@@ -1,0 +1,42 @@
+  # Misto kde je lobby a kam se hraci teleportuji po pripojeni. Definujte ho obdobne jako na nize uvedenem prikladu.
+  # misto world zadajte jmeno vaseho sveta a validni souradnice.
+  # LobbyLocationStartCorner:  dolni roh lobby
+  # LobbyLocationEndCorner: horni roh lobby
+  # oba tyto  rohy urcuji uhlopricku mistnosti od podlahy ke stropu napric mistnosti
+
+  LobbyLocationStartCorner:
+    ==: org.bukkit.Location
+    world: world
+    x: -37
+    y: 69
+    z: -3
+    pitch: 0
+    yaw: 0
+
+  LobbyLocationEndCorner:
+    ==: org.bukkit.Location
+    world: world
+    x: 5
+    y: 67
+    z: 4
+    pitch: 0
+    yaw: 0
+
+  TeamBattleLocation_1:
+    ==: org.bukkit.Location
+    world: world
+    x: 75
+    y: 65
+    z: 66
+    pitch: 0
+    yaw: 0
+
+  TeamBattleLocation_2:
+    ==: org.bukkit.Location
+    world: world
+    x: -158
+    y: 65
+    z: 66
+    pitch: 0
+    yaw: 0
+
