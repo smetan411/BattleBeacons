@@ -1,17 +1,16 @@
-package battle_beacons;
+package battlebeacons;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.plugin.java.JavaPlugin;
-import battle_beacons.commands.KonecHry;
-import battle_beacons.commands.VytvorTeleportera;
-import battle_beacons.listenery.*;
-import battle_beacons.lobby.Lobby;
-import battle_beacons.lobby.LobbyCreator;
-import battle_beacons.teleporter.TeleportDoAreny;
-import battle_beacons.teleporter.TeleportDoLoby;
-import battle_beacons.tymy.SkoreTymu;
-import battle_beacons.tymy.Tymy;
+import battlebeacons.commands.KonecHry;
+import battlebeacons.commands.VytvorTeleportera;
+import battlebeacons.listenery.*;
+import battlebeacons.lobby.Lobby;
+import battlebeacons.lobby.LobbyCreator;
+import battlebeacons.teleporter.TeleportDoAreny;
+import battlebeacons.teleporter.TeleportDoLoby;
+import battlebeacons.tymy.Tymy;
 
 public class MainTeams extends JavaPlugin {
 
@@ -25,12 +24,11 @@ public class MainTeams extends JavaPlugin {
         Tymy tymy = new Tymy();
         TeleportDoAreny teleportDoAreny = new TeleportDoAreny(this, lobby, tymy);
         TeleportDoLoby teleportDoLoby = new TeleportDoLoby(lobby, tymy);
-        SkoreTymu skoreTymu = new SkoreTymu(Bukkit.getScoreboardManager().getNewScoreboard(), tymy);
 
         //listeners
         getServer().getPluginManager().registerEvents(new PripojeniDoLobby(lobby), this);
-        getServer().getPluginManager().registerEvents(new StartHry(teleportDoAreny, skoreTymu), this);
-        getServer().getPluginManager().registerEvents(new ZabitiNepritele(tymy, teleportDoLoby, teleportDoAreny, skoreTymu), this);
+        getServer().getPluginManager().registerEvents(new StartHry(teleportDoAreny), this);
+        getServer().getPluginManager().registerEvents(new ZabitiSpoluhrace(tymy), this);
         getServer().getPluginManager().registerEvents(new OdpocetZakazPohybu(tymy, teleportDoAreny), this);
         getServer().getPluginManager().registerEvents(new RespawnHrace(tymy), this);
         //commandy

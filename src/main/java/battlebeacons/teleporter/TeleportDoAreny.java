@@ -1,11 +1,14 @@
-package battle_beacons.teleporter;
+package battlebeacons.teleporter;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Beacon;
+import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import battle_beacons.lobby.Lobby;
-import battle_beacons.tymy.Tym;
-import battle_beacons.tymy.Tymy;
+import battlebeacons.lobby.Lobby;
+import battlebeacons.tymy.Tym;
+import battlebeacons.tymy.Tymy;
 
 
 import java.util.ArrayList;
@@ -36,12 +39,18 @@ public final class TeleportDoAreny {
         tymy.vytvorTymy(lobbyPlayers, mista);
         for (int i = 0; i < tymy.pocet(); i++) {
             Tym tym = tymy.vratTym(i);
+            vytvorBeacon(tym.getSpawnPoint());
             for (Player player : tym.vratHrace()) {
                 player.teleport(tym.getSpawnPoint());
                 player.setBedSpawnLocation(tym.getSpawnPoint());
             }
         }
         odpocet(lobbyPlayers);
+    }
+
+    private void vytvorBeacon(Location spawnPoint) {
+        BlockState blockState = spawnPoint.getBlock().getState();
+        blockState.setType(Material.BEACON);
     }
 
     public void teleport(Player player) {

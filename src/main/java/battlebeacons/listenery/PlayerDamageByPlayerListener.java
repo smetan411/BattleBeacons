@@ -1,4 +1,4 @@
-package battle_beacons.listenery;
+package battlebeacons.listenery;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;

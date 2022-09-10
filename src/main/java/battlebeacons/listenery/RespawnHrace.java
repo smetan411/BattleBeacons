@@ -1,9 +1,9 @@
-package battle_beacons.listenery;
+package battlebeacons.listenery;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRespawnEvent;
-import battle_beacons.tymy.Tymy;
+import battlebeacons.tymy.Tymy;
 
 public class RespawnHrace implements Listener {
     private final Tymy tymy;
@@ -17,6 +17,7 @@ public class RespawnHrace implements Listener {
         if (!tymy.hraJede()) return;
         var player = event.getPlayer();
         var tym = tymy.vratTym(player);
+        if (!tym.isAlive()) return;
         player.teleport(tym.getSpawnPoint());
         event.setRespawnLocation(tym.getSpawnPoint());
     }

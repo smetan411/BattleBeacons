@@ -1,10 +1,10 @@
-package battle_beacons.tymy;
+package battlebeacons.tymy;
 
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import battle_beacons.factory.ArmorFactory;
-import battle_beacons.factory.Weapons;
+import battlebeacons.factory.ArmorFactory;
+import battlebeacons.factory.Weapons;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,10 +13,11 @@ public final class Tym {
 
     private final Set<Player> hraci = new HashSet<>();
     private final JmenoTymu jmenoTymu;
-    public Integer pocetKillu = 0;
     private final ArmorFactory armor;
     private final Weapons weapons;
     private final Location spawnPoint;
+
+    private Boolean alive = true;
 
     public Tym(JmenoTymu jmenoTymu, Location mistoVArene) {
         this.jmenoTymu = jmenoTymu;
@@ -43,13 +44,19 @@ public final class Tym {
     }
 
     public void zprava(String text, String subtext) {
-        hraci.forEach(hrac -> {
-            hrac.sendTitle(text, subtext, 0, convertSecToTicks(10), 0);
-        });
+        hraci.forEach(hrac -> hrac.sendTitle(text, subtext, 0, convertSecToTicks(10), 0));
     }
 
     public JmenoTymu getJmenoTymu() {
         return jmenoTymu;
+    }
+
+    public Boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(Boolean alive) {
+        this.alive = alive;
     }
 
     private void vybavHrace(Player hrac) {

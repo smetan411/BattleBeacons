@@ -1,4 +1,4 @@
-package battle_beacons.teleporter;
+package battlebeacons.teleporter;
 
 import org.bukkit.entity.Player;
 

@@ -1,11 +1,11 @@
-package battle_beacons.listenery;
+package battlebeacons.listenery;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
-import battle_beacons.teleporter.TeleportDoAreny;
-import battle_beacons.tymy.Tymy;
+import battlebeacons.teleporter.TeleportDoAreny;
+import battlebeacons.tymy.Tymy;
 
 public class OdpocetZakazPohybu implements Listener {
 

@@ -1,22 +1,19 @@
-package battle_beacons.listenery;
+package battlebeacons.listenery;
 
 
+import battlebeacons.teleporter.TeleportDoAreny;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import battle_beacons.teleporter.TeleportDoAreny;
-import battle_beacons.tymy.SkoreTymu;
 
 public class StartHry implements Listener {
 
     private final TeleportDoAreny teleport;
-    private final SkoreTymu skoreTymu;
 
-    public StartHry(TeleportDoAreny teleport, SkoreTymu skoreTymu) {
+    public StartHry(TeleportDoAreny teleport) {
         this.teleport = teleport;
-        this.skoreTymu = skoreTymu;
     }
 
     @EventHandler
@@ -28,7 +25,6 @@ public class StartHry implements Listener {
         Entity entity = event.getEntity();
         if (TeleportDoAreny.JMENO_TELEPORTERA.equals(entity.getCustomName())) {
             teleport.teleportPriStartuHry();
-            skoreTymu.inicializace();
         }
     }
 }

@@ -1,4 +1,4 @@
-package battle_beacons.factory;
+package battlebeacons.factory;
 
 import org.bukkit.Color;
 import org.bukkit.Material;

@@ -1,4 +1,4 @@
-package battle_beacons.tymy;
+package battlebeacons.tymy;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

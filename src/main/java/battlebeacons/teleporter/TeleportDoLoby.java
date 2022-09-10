@@ -1,8 +1,8 @@
-package battle_beacons.teleporter;
+package battlebeacons.teleporter;
 
 
-import battle_beacons.lobby.Lobby;
-import battle_beacons.tymy.Tymy;
+import battlebeacons.lobby.Lobby;
+import battlebeacons.tymy.Tymy;
 
 public class TeleportDoLoby {
     private final Lobby lobby;

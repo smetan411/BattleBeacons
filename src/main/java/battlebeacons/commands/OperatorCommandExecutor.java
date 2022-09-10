@@ -1,4 +1,4 @@
-package battle_beacons.commands;
+package battlebeacons.commands;
 
 import org.bukkit.World;
 import org.bukkit.command.Command;

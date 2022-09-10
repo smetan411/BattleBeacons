@@ -1,4 +1,4 @@
-package battle_beacons.tymy;
+package battlebeacons.tymy;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -7,7 +7,6 @@ public enum JmenoTymu {
     REDS("Reds", Color.RED, ChatColor.RED),
     BLUES("Blues", Color.BLUE, ChatColor.BLUE),
     GREENS("Greens", Color.GREEN, ChatColor.GREEN),
-    BLACKS("Blacks", Color.BLACK, ChatColor.BLACK),
     WHITES("Whites", Color.WHITE, ChatColor.WHITE);
 
     private final String jmeno;

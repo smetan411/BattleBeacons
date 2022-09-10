@@ -1,4 +1,4 @@
-package battle_beacons.factory;
+package battlebeacons.factory;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;

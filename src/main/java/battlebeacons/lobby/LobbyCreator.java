@@ -1,4 +1,4 @@
-package battle_beacons.lobby;
+package battlebeacons.lobby;
 
 import org.bukkit.plugin.Plugin;
 
