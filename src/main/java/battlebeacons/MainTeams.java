@@ -1,5 +1,6 @@
 package battlebeacons;
 
+import battlebeacons.tymy.Skore;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -24,14 +25,15 @@ public class MainTeams extends JavaPlugin {
         Tymy tymy = new Tymy();
         TeleportDoAreny teleportDoAreny = new TeleportDoAreny(this, lobby, tymy);
         TeleportDoLoby teleportDoLoby = new TeleportDoLoby(lobby, tymy);
+        Skore skore = new Skore(Bukkit.getScoreboardManager().getNewScoreboard(), tymy);
 
         //listeners
         getServer().getPluginManager().registerEvents(new PripojeniDoLobby(lobby), this);
-        getServer().getPluginManager().registerEvents(new StartHry(teleportDoAreny), this);
-        getServer().getPluginManager().registerEvents(new ZabitiSpoluhrace(tymy), this);
+        getServer().getPluginManager().registerEvents(new StartHry(teleportDoAreny, skore), this);
+        getServer().getPluginManager().registerEvents(new ZabitiHrace(tymy, skore), this);
         getServer().getPluginManager().registerEvents(new OdpocetZakazPohybu(tymy, teleportDoAreny), this);
         getServer().getPluginManager().registerEvents(new RespawnHrace(tymy, teleportDoLoby), this);
-        getServer().getPluginManager().registerEvents(new BeaconZnicen(tymy), this);
+        getServer().getPluginManager().registerEvents(new BeaconZnicen(tymy, skore), this);
 
         //commandy
         getCommand("+vytvorTeleportera").setExecutor(new VytvorTeleportera());

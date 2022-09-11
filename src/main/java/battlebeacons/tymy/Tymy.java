@@ -23,6 +23,12 @@ public class Tymy {
     public Tym vratTym(int cislo) {
         return tymy.get(cislo);
     }
+    public Tym vratTym(String jmenoTymu) {
+        return tymy.stream()
+                .filter(tym -> jmenoTymu.equals(tym.getJmenoTymu().getJmeno()))
+                .findFirst()
+                .get();
+    }
 
     public void vytvorTymy(List<Player> hraci, List<Location> spawnPointy) {
         tymy.clear();

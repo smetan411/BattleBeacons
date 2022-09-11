@@ -5,11 +5,11 @@ import battlebeacons.tymy.Tymy;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-public class ZabitiSpoluhrace extends PlayerDamageByPlayerListener {
+public class ZabitiHrace extends PlayerDamageByPlayerListener {
 
     private final Tymy tymy;
 
-    public ZabitiSpoluhrace(Tymy tymy) {
+    public ZabitiHrace(Tymy tymy) {
         this.tymy = tymy;
     }
 
