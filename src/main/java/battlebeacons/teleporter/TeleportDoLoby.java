@@ -15,7 +15,7 @@ public class TeleportDoLoby {
 
     public void teleport() {
         tymy.vratTymy().forEach( tym -> {
-            tym.vratHrace().forEach(hrac -> {
+            tym.getHraci().forEach(hrac -> {
                 var mistovLoby = lobby.nahodneMistoVLobby();
                 hrac.teleport(mistovLoby);
             });

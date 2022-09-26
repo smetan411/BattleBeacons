@@ -1,6 +1,7 @@
 package battlebeacons.lobby;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
@@ -43,12 +44,21 @@ public final class Lobby {
     }
 
     public Location nahodneMistoVLobby() {
-        double x = randomPoint(roh1.getX(), roh2.getX());
-        //y random
-        var minY = Math.min(roh1.getY(), roh2.getY());
-        //between Z
-        double z = randomPoint(roh1.getZ(), roh2.getZ());
-        return new Location(roh1.getWorld(), x, minY, z);
+        Location location;
+        do {
+            double x = randomPoint(roh1.getX(), roh2.getX());
+            //y random
+            double y = randomPoint(roh1.getY(), roh2.getY());
+            //between Z
+            double z = randomPoint(roh1.getZ(), roh2.getZ());
+            location = new Location(roh1.getWorld(), x, y, z);
+        } while (!stojiNaZemi(location));
+        return location;
+    }
+
+    private boolean stojiNaZemi(Location location) {
+        return location.getBlock().getType() == Material.AIR &&
+                location.clone().add(0, -1, 0).getBlock().getType() != Material.AIR;
     }
 
     private double randomPoint(double point1, double point2) {

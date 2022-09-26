@@ -18,11 +18,12 @@ public class KonecHry extends  OperatorCommandExecutor {
 
     @Override
     boolean onCommand(Player operator, World world, Command command, String s, String[] args) {
+        if (!tymy.hraJede()) return true;
         teleportDoLoby.teleport();
         tymy.vratTymy().forEach( tym -> {
             tym.zprava("Konec hry", "OP ukoncil hru");
         });
-        tymy.clear();
-        return false;
+        tymy.konecHry();
+        return true;
     }
 }

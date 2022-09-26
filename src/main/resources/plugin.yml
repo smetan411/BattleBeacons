@@ -1,6 +1,6 @@
-name: Teams
+name: BattleBeacons
 version: '${project.version}'
-main: teams.MainTeams
+main: battlebeacons.Main
 api-version: 1.18
 
 commands:

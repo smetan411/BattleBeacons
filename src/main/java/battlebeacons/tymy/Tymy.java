@@ -16,7 +16,7 @@ public class Tymy {
         return tymy.size();
     }
 
-    public void clear() {
+    public void konecHry() {
         tymy.clear();
     }
 
@@ -25,17 +25,17 @@ public class Tymy {
     }
     public Tym vratTym(String jmenoTymu) {
         return tymy.stream()
-                .filter(tym -> jmenoTymu.equals(tym.getJmenoTymu().getJmeno()))
+                .filter(tym -> jmenoTymu.equals(tym.getNastaveniTymu().getJmeno()))
                 .findFirst()
                 .get();
     }
 
-    public void vytvorTymy(List<Player> hraci, List<Location> spawnPointy) {
+    public void vytvorTymy(List<Player> hraci, List<Location> spawnPointy, List<Location> beaconPointy) {
         tymy.clear();
         int pocetTymu = spawnPointy.size();
-        if (pocetTymu > JmenoTymu.values().length) throw new IllegalArgumentException("Prilis mnoho tymu.");
+        if (pocetTymu > NastaveniTymu.values().length) throw new IllegalArgumentException("Prilis mnoho tymu.");
         for (int i = 0; i < pocetTymu; i++) {
-            tymy.add(new Tym(JmenoTymu.values()[i], spawnPointy.get(i)));
+            tymy.add(new Tym(NastaveniTymu.values()[i], spawnPointy.get(i), beaconPointy.get(i)));
         }
         hraci = zamichej(hraci);
         int i = 0;
@@ -43,6 +43,10 @@ public class Tymy {
             tymy.get(i++).pridej(player);
             if (i >= pocetTymu) i = 0;
         }
+        //prazdne tymy oznacime jako mrtve
+        tymy.stream()
+                .filter( tym -> tym.getHraci().isEmpty())
+                .forEach( tym -> tym.setAlive(false));
     }
 
     public boolean spoluhraci(Player player1, Player player2) {
@@ -69,7 +73,7 @@ public class Tymy {
     public Tym vratTym(Player player) {
         return
                 tymy.stream()
-                        .filter(tym -> tym.vratHrace().contains(player))
+                        .filter(tym -> tym.getHraci().contains(player))
                         .findFirst()
                         .orElseThrow(() -> new IllegalArgumentException("Hrac neexistuje."));
     }

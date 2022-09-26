@@ -13,7 +13,7 @@ import battlebeacons.teleporter.TeleportDoAreny;
 import battlebeacons.teleporter.TeleportDoLoby;
 import battlebeacons.tymy.Tymy;
 
-public class MainTeams extends JavaPlugin {
+public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
@@ -25,15 +25,16 @@ public class MainTeams extends JavaPlugin {
         Tymy tymy = new Tymy();
         TeleportDoAreny teleportDoAreny = new TeleportDoAreny(this, lobby, tymy);
         TeleportDoLoby teleportDoLoby = new TeleportDoLoby(lobby, tymy);
-        Skore skore = new Skore(Bukkit.getScoreboardManager().getNewScoreboard(), tymy);
+        Skore skore = new Skore(tymy);
 
         //listeners
         getServer().getPluginManager().registerEvents(new PripojeniDoLobby(lobby), this);
         getServer().getPluginManager().registerEvents(new StartHry(teleportDoAreny, skore), this);
-        getServer().getPluginManager().registerEvents(new ZabitiHrace(tymy, skore), this);
+        getServer().getPluginManager().registerEvents(new ZraneniHrace(tymy, teleportDoLoby), this);
         getServer().getPluginManager().registerEvents(new OdpocetZakazPohybu(tymy, teleportDoAreny), this);
-        getServer().getPluginManager().registerEvents(new RespawnHrace(tymy, teleportDoLoby), this);
-        getServer().getPluginManager().registerEvents(new BeaconZnicen(tymy, skore), this);
+        getServer().getPluginManager().registerEvents(new RespawnHrace(tymy), this);
+        getServer().getPluginManager().registerEvents(new SmrtHrace(tymy, skore, teleportDoLoby), this);
+        getServer().getPluginManager().registerEvents(new BeaconZnicen(tymy), this);
 
         //commandy
         getCommand("+vytvorTeleportera").setExecutor(new VytvorTeleportera());

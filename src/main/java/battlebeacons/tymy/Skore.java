@@ -1,5 +1,6 @@
 package battlebeacons.tymy;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.scoreboard.DisplaySlot;
@@ -9,45 +10,48 @@ import org.bukkit.scoreboard.Scoreboard;
 
 public final class Skore {
 
-    private final Scoreboard scoreboard;
+    private Scoreboard scoreboard;
     private final Tymy tymy;
 
-    public Skore(Scoreboard scoreboard, Tymy tymy) {
-        this.scoreboard = scoreboard;
+    public Skore(Tymy tymy) {
         this.tymy = tymy;
     }
 
     public void inicializace() {
-        for (Tym tym : tymy.vratTymy()) {
-            Objective objective = scoreboard.registerNewObjective(tym.getJmenoTymu().getJmeno(), "dummy",
-                    tym.getJmenoTymu().getChatColor().toString() + ChatColor.STRIKETHROUGH + tym.getJmenoTymu().getJmeno());
-            objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-            updateObjective(objective);
-            tym.vratHrace().forEach(player -> player.setScoreboard(scoreboard));
+        scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
+        tymy.vratTymy().forEach(tym -> tym.getHraci().forEach(player -> player.setScoreboard(scoreboard)));
+        pocatecniUpdate();
+    }
+
+    public void pocatecniUpdate() {
+        Objective objective = scoreboard.registerNewObjective("Skore", "dummy", "Tymy");
+        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+        for (var tym : tymy.vratTymy()) {
+            String jmenoTymu = tym.getNastaveniTymu().getChatColor() + tym.getNastaveniTymu().getJmeno();
+            if (!tym.isAlive()) {
+                jmenoTymu = tym.getNastaveniTymu().getChatColor() + ChatColor.STRIKETHROUGH.toString() + tym.getNastaveniTymu().getJmeno();
+            }
+            updateScore(tym, objective.getScore(jmenoTymu));
         }
     }
 
     public void update() {
-        for (var objective: scoreboard.getObjectives()) {
-            updateObjective(objective);
-            Tym tym = getTymFromObjective(objective);
+        var objective = scoreboard.getObjective("Skore");
+        for (var tym : tymy.vratTymy()) {
+            String jmenoTymu = tym.getNastaveniTymu().getChatColor() + tym.getNastaveniTymu().getJmeno();
             if (!tym.isAlive()) {
-                objective.setDisplayName(tym.getJmenoTymu().getChatColor() + tym.getJmenoTymu().getJmeno());
+                objective.unregister();
+                pocatecniUpdate();
+                return;
             }
+            updateScore(tym, objective.getScore(jmenoTymu));
         }
     }
 
-    private void updateObjective(Objective objective) {
-        Tym tym = getTymFromObjective(objective);
-        Score score = objective.getScore("Nazivu:");
-        score.setScore((int) tym.vratHrace().stream()
+    private void updateScore(Tym tym, Score score) {
+        score.setScore((int) tym.getHraci().stream()
                 .filter(hrac -> hrac.getGameMode() != GameMode.SPECTATOR)
                 .count());
 
-    }
-
-    private Tym getTymFromObjective(Objective objective) {
-        String jmenoTymu = objective.getName();
-        return tymy.vratTym(jmenoTymu);
     }
 }

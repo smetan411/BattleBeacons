@@ -2,8 +2,7 @@ package battlebeacons.teleporter;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Beacon;
-import org.bukkit.block.BlockState;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import battlebeacons.lobby.Lobby;
@@ -20,6 +19,7 @@ import java.util.logging.Level;
 public final class TeleportDoAreny {
 
     private static final String TEAM_LOCATION_CONFIG_KEY = "TeamBattleLocation_";
+    private static final String BEACON_LOCATION_CONFIG_KEY = "BeaconLocation_";
     public static final String JMENO_TELEPORTERA = "Team Battle Teleporter";
 
     private final Plugin plugin;
@@ -35,12 +35,13 @@ public final class TeleportDoAreny {
 
     public void teleportPriStartuHry() {
         List<Player> lobbyPlayers = lobby.hraciVLobby();
-        List<Location> mista = cilTeleportu();
-        tymy.vytvorTymy(lobbyPlayers, mista);
+        List<Location> spawnPointy = nactiPointy(PointType.SPAWN);
+        List<Location> beaconPointy = nactiPointy(PointType.BEACON);
+        tymy.vytvorTymy(lobbyPlayers, spawnPointy, beaconPointy);
         for (int i = 0; i < tymy.pocet(); i++) {
             Tym tym = tymy.vratTym(i);
-            vytvorBeacon(tym.getSpawnPoint());
-            for (Player player : tym.vratHrace()) {
+            vytvorBeacon(tym);
+            for (Player player : tym.getHraci()) {
                 player.teleport(tym.getSpawnPoint());
                 player.setBedSpawnLocation(tym.getSpawnPoint());
             }
@@ -48,25 +49,30 @@ public final class TeleportDoAreny {
         odpocet(lobbyPlayers);
     }
 
-    private void vytvorBeacon(Location spawnPoint) {
-        BlockState blockState = spawnPoint.getBlock().getState();
-        blockState.setType(Material.BEACON);
+    private void vytvorBeacon(Tym team) {
+        Block beaconBlock = team.getBeaconPoint().getBlock();
+        beaconBlock.setType(Material.BEACON);
+        Block glassBlock = team.getBeaconPoint().clone().add(0,1,0).getBlock();
+        glassBlock.setType(team.getNastaveniTymu().getBeaconGlass());
     }
 
-    public void teleport(Player player) {
-        player.teleport(tymy.vratTym(player).getSpawnPoint());
+    private enum PointType {
+        SPAWN, BEACON
     }
 
-    private String getConfigKey(int teamNumber) {
-        return TEAM_LOCATION_CONFIG_KEY + teamNumber;
+    private String getConfigKey(PointType pointType, int teamNumber) {
+        return switch (pointType) {
+            case SPAWN -> TEAM_LOCATION_CONFIG_KEY + teamNumber;
+            case BEACON -> BEACON_LOCATION_CONFIG_KEY + teamNumber;
+        };
     }
 
-    private List<Location> cilTeleportu() {
+    private List<Location> nactiPointy(PointType pointType) {
         List<Location> mista = new ArrayList<>();
         var i = 1;
-        Location teamLocation;
-        while ((teamLocation = plugin.getConfig().getLocation(getConfigKey(i++))) != null) {
-            mista.add(teamLocation);
+        Location location;
+        while ((location = plugin.getConfig().getLocation(getConfigKey(pointType, i++))) != null) {
+            mista.add(location);
         }
         if (mista.size() == 0) {
             plugin.getLogger().log(Level.CONFIG, "Nenactena spawnovaci mista z configu pro team battle.");
