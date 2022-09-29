@@ -16,7 +16,6 @@ public final class ArmorFactory {
 
     public ItemStack chestplate() {
         var chestplate = new ItemStack(Material.LEATHER_CHESTPLATE, 1);
-        chestplate.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
         chestplate.addEnchantment(Enchantment.BINDING_CURSE, 1);
         LeatherArmorMeta meta = (LeatherArmorMeta) chestplate.getItemMeta();
         meta.setColor(color);

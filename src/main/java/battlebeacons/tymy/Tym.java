@@ -65,7 +65,7 @@ public final class Tym {
         this.alive = alive;
     }
 
-    private void vybavHrace(Player hrac) {
+    public void vybavHrace(Player hrac) {
         var inventory = hrac.getInventory();
         inventory.clear();
         inventory.setChestplate(armor.chestplate());
@@ -76,6 +76,7 @@ public final class Tym {
         inventory.setItemInOffHand(weapons.shield());
         inventory.addItem(weapons.bow());
         inventory.addItem(weapons.arrow());
+        inventory.addItem(weapons.axe());
     }
 
     private static int convertSecToTicks(int sec) {

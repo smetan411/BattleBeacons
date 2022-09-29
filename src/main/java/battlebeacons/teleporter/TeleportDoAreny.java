@@ -1,5 +1,6 @@
 package battlebeacons.teleporter;
 
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -44,6 +45,7 @@ public final class TeleportDoAreny {
             for (Player player : tym.getHraci()) {
                 player.teleport(tym.getSpawnPoint());
                 player.setBedSpawnLocation(tym.getSpawnPoint());
+                player.setGameMode(GameMode.SURVIVAL);
             }
         }
         odpocet(lobbyPlayers);

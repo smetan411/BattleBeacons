@@ -23,13 +23,13 @@ public class StartHry implements Listener {
     public void onDamage(EntityDamageByEntityEvent event) {
         if (!(event.getDamager() instanceof Player)) return;
         Player player = (Player) event.getDamager();
-        if (!player.isOp()) return;
 
         Entity entity = event.getEntity();
         if (TeleportDoAreny.JMENO_TELEPORTERA.equals(entity.getCustomName())) {
+            event.setCancelled(true);
+            if (!player.isOp()) return;
             teleport.teleportPriStartuHry();
             skore.inicializace();
         }
-        event.setCancelled(true);
     }
 }

@@ -18,7 +18,6 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
-        Bukkit.setDefaultGameMode(GameMode.ADVENTURE);
         //data
         LobbyCreator lobbyCreator = new LobbyCreator(this);
         Lobby lobby = lobbyCreator.createLobby();
@@ -35,6 +34,8 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new RespawnHrace(tymy), this);
         getServer().getPluginManager().registerEvents(new SmrtHrace(tymy, skore, teleportDoLoby), this);
         getServer().getPluginManager().registerEvents(new BeaconZnicen(tymy), this);
+        getServer().getPluginManager().registerEvents(new BlockPoskozen(), this);
+
 
         //commandy
         getCommand("+vytvorTeleportera").setExecutor(new VytvorTeleportera());

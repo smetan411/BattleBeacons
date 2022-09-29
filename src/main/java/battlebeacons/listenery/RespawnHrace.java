@@ -18,7 +18,9 @@ public class RespawnHrace implements Listener {
 
         var player = event.getPlayer();
         var tym = tymy.vratTym(player);
+        tym.vybavHrace(player);
         player.teleport(tym.getSpawnPoint());
         event.setRespawnLocation(tym.getSpawnPoint());
+
     }
 }

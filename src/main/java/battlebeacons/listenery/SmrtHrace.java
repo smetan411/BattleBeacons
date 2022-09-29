@@ -6,9 +6,14 @@ import battlebeacons.tymy.Skore;
 import battlebeacons.tymy.Tym;
 import battlebeacons.tymy.Tymy;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Item;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +34,10 @@ public final class SmrtHrace implements Listener {
     public void smrtHrace(PlayerDeathEvent playerDeathEvent) {
         if (!tymy.hraJede()) return;
         var player = playerDeathEvent.getEntity();
+        //vypadne z nej vlna
+        playerDeathEvent.getDrops().clear();
+        playerDeathEvent.getDrops().add(new ItemStack(Material.BLACK_WOOL, 10));
+        //spectator mod pokud uz neni beacon
         var tym = tymy.vratTym(player);
         if (!tym.isAlive()) {
             player.setGameMode(GameMode.SPECTATOR);

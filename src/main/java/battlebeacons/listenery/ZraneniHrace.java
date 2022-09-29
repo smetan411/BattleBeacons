@@ -20,6 +20,8 @@ public class ZraneniHrace extends PlayerDamageByPlayerListener {
     @Override
     public void playerDamaged(Player utocnik, Player zraneny, double damage, EntityDamageByEntityEvent event) {
         if (!tymy.hraJede()) return;
-        if (tymy.spoluhraci(utocnik, zraneny)) event.setCancelled(true);
+        if (tymy.spoluhraci(utocnik, zraneny)) {
+           event.setCancelled(true);
+        }
     }
 }
