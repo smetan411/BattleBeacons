@@ -1,10 +1,10 @@
 package battlebeacons.commands;
 
+import battlebeacons.teleporter.TeleportDoAreny;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
-import battlebeacons.teleporter.TeleportDoAreny;
 
 public class VytvorTeleportera extends OperatorCommandExecutor {
 

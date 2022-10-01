@@ -1,10 +1,10 @@
 package battlebeacons.commands;
 
+import battlebeacons.teleporter.TeleportDoLoby;
+import battlebeacons.tymy.Tymy;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
-import battlebeacons.teleporter.TeleportDoLoby;
-import battlebeacons.tymy.Tymy;
 
 public class KonecHry extends  OperatorCommandExecutor {
 

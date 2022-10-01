@@ -3,7 +3,10 @@ package battlebeacons.tymy;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 
 public class Tymy {
     private List<Tym> tymy = new ArrayList<>();
@@ -28,6 +31,12 @@ public class Tymy {
                 .filter(tym -> jmenoTymu.equals(tym.getNastaveniTymu().getJmeno()))
                 .findFirst()
                 .get();
+    }
+
+    public Optional<Tym> vratTymPodleMistaBeaconu(Location location) {
+        return tymy.stream()
+                .filter(tym -> location.equals(tym.getBeaconPoint()))
+                .findFirst();
     }
 
     public void vytvorTymy(List<Player> hraci, List<Location> spawnPointy, List<Location> beaconPointy) {

@@ -1,10 +1,10 @@
 package battlebeacons.listenery;
 
+import battlebeacons.lobby.Lobby;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import battlebeacons.lobby.Lobby;
 
 public class PripojeniDoLobby implements Listener {
 

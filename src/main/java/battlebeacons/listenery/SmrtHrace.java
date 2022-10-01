@@ -7,9 +7,6 @@ import battlebeacons.tymy.Tym;
 import battlebeacons.tymy.Tymy;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -23,11 +20,13 @@ public final class SmrtHrace implements Listener {
     private final Tymy tymy;
     private final Skore skore;
     private final TeleportDoLoby teleportDoLoby;
+    private final SpravaBloku spravaBloku;
 
-    public SmrtHrace(Tymy tymy, Skore skore, TeleportDoLoby teleportDoLoby) {
+    public SmrtHrace(Tymy tymy, Skore skore, TeleportDoLoby teleportDoLoby, SpravaBloku spravaBloku) {
         this.tymy = tymy;
         this.skore = skore;
         this.teleportDoLoby = teleportDoLoby;
+        this.spravaBloku = spravaBloku;
     }
 
     @EventHandler
@@ -55,6 +54,7 @@ public final class SmrtHrace implements Listener {
                 tymy.vratTymy().forEach(vsechnyTymy -> vsechnyTymy.zprava("Zvitezit tym " + ziveTymy.get(0).getNastaveniTymu(), ""));
             }
             teleportDoLoby.teleport();
+            spravaBloku.znicPolozeneBloky();
             tymy.konecHry();
         }
     }

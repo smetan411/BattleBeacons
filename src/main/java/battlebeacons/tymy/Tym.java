@@ -1,10 +1,10 @@
 package battlebeacons.tymy;
 
 
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
 import battlebeacons.factory.ArmorFactory;
 import battlebeacons.factory.Weapons;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 import java.util.HashSet;
 import java.util.Set;

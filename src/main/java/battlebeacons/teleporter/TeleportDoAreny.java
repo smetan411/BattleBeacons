@@ -1,15 +1,14 @@
 package battlebeacons.teleporter;
 
+import battlebeacons.lobby.Lobby;
+import battlebeacons.tymy.Tym;
+import battlebeacons.tymy.Tymy;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import battlebeacons.lobby.Lobby;
-import battlebeacons.tymy.Tym;
-import battlebeacons.tymy.Tymy;
-
 
 import java.util.ArrayList;
 import java.util.List;
