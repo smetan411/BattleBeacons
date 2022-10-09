@@ -45,4 +45,5 @@ public final class ArmorFactory {
         boots.addEnchantment(Enchantment.BINDING_CURSE, 1);
         return boots;
     }
+
 }

@@ -31,5 +31,7 @@ public class Weapons {
         var axe = new ItemStack(Material.IRON_AXE, 1);
         return axe;
     }
+
+
 }
 
