@@ -14,9 +14,9 @@ public final class LobbyCreator {
     }
 
     public Lobby createLobby() {
-        var  startCorner = plugin.getConfig().getLocation(LOBBY_LOCATION_START_CORNER);
-        var  endCorner = plugin.getConfig().getLocation(LOBBY_LOCATION_END_CORNER);
-        if (startCorner == null || endCorner == null ) {
+        var startCorner = plugin.getConfig().getLocation(LOBBY_LOCATION_START_CORNER);
+        var endCorner = plugin.getConfig().getLocation(LOBBY_LOCATION_END_CORNER);
+        if (startCorner == null || endCorner == null) {
             throw new RuntimeException("Lobby neni definovana");
         }
         return new Lobby(startCorner, endCorner);

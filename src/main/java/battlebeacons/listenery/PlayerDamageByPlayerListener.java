@@ -11,9 +11,9 @@ public abstract class PlayerDamageByPlayerListener implements Listener {
     @EventHandler
     public void damage(EntityDamageByEntityEvent event) {
         Entity utocnik = event.getDamager();
-        if (!(utocnik instanceof Player) ) return;
+        if (!(utocnik instanceof Player)) return;
         Entity zraneny = event.getEntity();
-        if (!(zraneny instanceof  Player)) return;
+        if (!(zraneny instanceof Player)) return;
         playerDamaged((Player) utocnik, (Player) zraneny, event.getFinalDamage(), event);
     }
 

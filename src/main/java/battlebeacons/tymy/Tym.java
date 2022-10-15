@@ -28,6 +28,10 @@ public final class Tym {
         weapons = new Weapons();
     }
 
+    private static int convertSecToTicks(int sec) {
+        return sec * 20;
+    }
+
     public void pridej(Player player) {
         vybavHrace(player);
         hraci.add(player);
@@ -77,9 +81,5 @@ public final class Tym {
         inventory.addItem(weapons.bow());
         inventory.addItem(weapons.arrow());
         inventory.addItem(weapons.axe());
-    }
-
-    private static int convertSecToTicks(int sec) {
-        return sec * 20;
     }
 }

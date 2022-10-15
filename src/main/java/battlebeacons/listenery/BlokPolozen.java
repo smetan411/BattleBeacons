@@ -1,5 +1,6 @@
 package battlebeacons.listenery;
 
+import battlebeacons.StavHry;
 import battlebeacons.tymy.Tymy;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -12,16 +13,21 @@ public class BlokPolozen implements Listener {
     private final Tymy tymy;
     private final SpravaBloku spravaBloku;
 
-    public BlokPolozen(Tymy tymy, SpravaBloku spravaBloku) {
+    private final StavHry stavHry;
+
+    public BlokPolozen(Tymy tymy, SpravaBloku spravaBloku, StavHry stavHry) {
         this.tymy = tymy;
         this.spravaBloku = spravaBloku;
+        this.stavHry = stavHry;
     }
 
     @EventHandler
     public void polozeniBloku(BlockPlaceEvent event) {
+        if (!stavHry.isGameRunning()) return;
+
         Block blok = event.getBlock();
         if (SpravaBloku.jeBlokZakazany(blok.getType())) return;
-        switch(blok.getType()) {
+        switch (blok.getType()) {
             //pokud hrac polozi beacon na beacon point tak ozivi tym a tym muze pokracovat ve hre
             case BEACON -> {
                 Location location = blok.getLocation();

@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.Random;
 
 public class Tymy {
-    private List<Tym> tymy = new ArrayList<>();
+    private final List<Tym> tymy = new ArrayList<>();
 
     public List<Tym> vratTymy() {
         return new ArrayList<>(tymy);
@@ -19,13 +19,14 @@ public class Tymy {
         return tymy.size();
     }
 
-    public void konecHry() {
+    public void smazTymy() {
         tymy.clear();
     }
 
     public Tym vratTym(int cislo) {
         return tymy.get(cislo);
     }
+
     public Tym vratTym(String jmenoTymu) {
         return tymy.stream()
                 .filter(tym -> jmenoTymu.equals(tym.getNastaveniTymu().getJmeno()))
@@ -54,8 +55,8 @@ public class Tymy {
         }
         //prazdne tymy oznacime jako mrtve
         tymy.stream()
-                .filter( tym -> tym.getHraci().isEmpty())
-                .forEach( tym -> tym.setAlive(false));
+                .filter(tym -> tym.getHraci().isEmpty())
+                .forEach(tym -> tym.setAlive(false));
     }
 
     public boolean spoluhraci(Player player1, Player player2) {
@@ -85,9 +86,5 @@ public class Tymy {
                         .filter(tym -> tym.getHraci().contains(player))
                         .findFirst()
                         .orElseThrow(() -> new IllegalArgumentException("Hrac neexistuje."));
-    }
-
-    public boolean hraJede() {
-        return !tymy.isEmpty();
     }
 }

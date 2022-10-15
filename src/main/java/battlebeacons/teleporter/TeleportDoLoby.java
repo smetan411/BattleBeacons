@@ -15,7 +15,7 @@ public class TeleportDoLoby {
     }
 
     public void teleport() {
-        tymy.vratTymy().forEach( tym -> {
+        tymy.vratTymy().forEach(tym -> {
             tym.getHraci().forEach(hrac -> {
                 var mistovLoby = lobby.nahodneMistoVLobby();
                 hrac.setGameMode(GameMode.ADVENTURE);

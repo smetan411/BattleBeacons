@@ -1,27 +1,26 @@
 package battlebeacons.listenery;
 
+import battlebeacons.StavHry;
 import battlebeacons.tymy.Tymy;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class BeaconZnicen implements Listener {
     private final Tymy tymy;
-    private Map<Block, Integer> hitCounter = new HashMap<>();
+    private final StavHry stavHry;
 
-    public BeaconZnicen(Tymy tymy) {
+    public BeaconZnicen(Tymy tymy, StavHry stavHry) {
         this.tymy = tymy;
+        this.stavHry = stavHry;
     }
+
     @EventHandler
     public void beaconZnicen(BlockBreakEvent event) {
-        if (!tymy.hraJede()) return;
-        if (event.getBlock().getType() != Material.BEACON ) return;
+        if (!stavHry.isGameRunning()) return;
+        if (event.getBlock().getType() != Material.BEACON) return;
         Location location = event.getBlock().getLocation();
         for (var tym : tymy.vratTymy()) {
             if (tym.getBeaconPoint().equals(location)) {

@@ -11,8 +11,7 @@ public abstract class OperatorCommandExecutor implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (!commandSender.isOp()) return false;
-        if (!(commandSender instanceof Player)) return false;
-        Player player = (Player) commandSender;
+        if (!(commandSender instanceof Player player)) return false;
         return onCommand(player, player.getWorld(), command, s, args);
     }
 

@@ -10,8 +10,8 @@ import org.bukkit.scoreboard.Scoreboard;
 
 public final class Skore {
 
-    private Scoreboard scoreboard;
     private final Tymy tymy;
+    private Scoreboard scoreboard;
 
     public Skore(Tymy tymy) {
         this.tymy = tymy;

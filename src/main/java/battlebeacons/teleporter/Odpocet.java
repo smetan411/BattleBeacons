@@ -13,6 +13,10 @@ final class Odpocet implements Runnable {
         this.hraci = hraci;
     }
 
+    private static int convertSecToTicks(int sec) {
+        return sec * 20;
+    }
+
     @Override
     public void run() {
         odpocet = true;
@@ -31,9 +35,5 @@ final class Odpocet implements Runnable {
 
     public boolean jeOdpocet() {
         return odpocet;
-    }
-
-    private static int convertSecToTicks(int sec) {
-        return sec * 20;
     }
 }

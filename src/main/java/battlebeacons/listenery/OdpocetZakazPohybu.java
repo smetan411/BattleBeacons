@@ -1,5 +1,6 @@
 package battlebeacons.listenery;
 
+import battlebeacons.StavHry;
 import battlebeacons.teleporter.TeleportDoAreny;
 import battlebeacons.tymy.Tymy;
 import org.bukkit.entity.Player;
@@ -11,14 +12,17 @@ public class OdpocetZakazPohybu implements Listener {
 
     private final Tymy tymy;
     private final TeleportDoAreny teleportDoHry;
+    private final StavHry stavHry;
 
-    public OdpocetZakazPohybu(Tymy tymy, TeleportDoAreny teleportDoHry) {
+    public OdpocetZakazPohybu(Tymy tymy, TeleportDoAreny teleportDoHry, StavHry stavHry) {
         this.tymy = tymy;
         this.teleportDoHry = teleportDoHry;
+        this.stavHry = stavHry;
     }
 
     @EventHandler
     public void zakazPohybu(PlayerMoveEvent event) {
+        if (!stavHry.isGameRunning()) return;
         if (teleportDoHry.jeOdpocet()) {
             Player player = event.getPlayer();
 

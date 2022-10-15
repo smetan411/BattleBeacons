@@ -18,10 +18,9 @@ import java.util.logging.Level;
 
 public final class TeleportDoAreny {
 
+    public static final String JMENO_TELEPORTERA = "Team Battle Teleporter";
     private static final String TEAM_LOCATION_CONFIG_KEY = "TeamBattleLocation_";
     private static final String BEACON_LOCATION_CONFIG_KEY = "BeaconLocation_";
-    public static final String JMENO_TELEPORTERA = "Team Battle Teleporter";
-
     private final Plugin plugin;
     private final Lobby lobby;
     private final Tymy tymy;
@@ -53,12 +52,8 @@ public final class TeleportDoAreny {
     private void vytvorBeacon(Tym team) {
         Block beaconBlock = team.getBeaconPoint().getBlock();
         beaconBlock.setType(Material.BEACON);
-        Block glassBlock = team.getBeaconPoint().clone().add(0,1,0).getBlock();
+        Block glassBlock = team.getBeaconPoint().clone().add(0, 1, 0).getBlock();
         glassBlock.setType(team.getNastaveniTymu().getBeaconGlass());
-    }
-
-    private enum PointType {
-        SPAWN, BEACON
     }
 
     private String getConfigKey(PointType pointType, int teamNumber) {
@@ -92,6 +87,10 @@ public final class TeleportDoAreny {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         odpocet = new Odpocet(hraci);
         executorService.submit(odpocet);
+    }
+
+    private enum PointType {
+        SPAWN, BEACON
     }
 
 }

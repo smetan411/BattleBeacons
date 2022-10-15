@@ -32,10 +32,9 @@ public final class Lobby {
         //between Z
         var minZ = Math.min(roh1.getZ(), roh2.getZ());
         var maxZ = Math.max(roh1.getZ(), roh2.getZ());
-        if (!between(location.getZ(), minZ, maxZ)) return false;
+        return between(location.getZ(), minZ, maxZ);
 
         //vse v poradku
-        return true;
     }
 
     private boolean between(double value, double min, double max) {

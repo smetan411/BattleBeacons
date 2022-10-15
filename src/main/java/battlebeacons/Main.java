@@ -16,7 +16,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         this.saveDefaultConfig();
-        //data
+        //servicy
         LobbyCreator lobbyCreator = new LobbyCreator(this);
         Lobby lobby = lobbyCreator.createLobby();
         Tymy tymy = new Tymy();
@@ -24,22 +24,24 @@ public class Main extends JavaPlugin {
         TeleportDoLoby teleportDoLoby = new TeleportDoLoby(lobby, tymy);
         Skore skore = new Skore(tymy);
         SpravaBloku spravaBloku = new SpravaBloku();
+        StavHry stavHry = new StavHry(tymy, teleportDoLoby, spravaBloku, teleportDoAreny, skore);
 
         //listeners
         getServer().getPluginManager().registerEvents(new PripojeniDoLobby(lobby), this);
-        getServer().getPluginManager().registerEvents(new StartHry(teleportDoAreny, skore), this);
-        getServer().getPluginManager().registerEvents(new ZraneniHrace(tymy, teleportDoLoby), this);
-        getServer().getPluginManager().registerEvents(new OdpocetZakazPohybu(tymy, teleportDoAreny), this);
-        getServer().getPluginManager().registerEvents(new RespawnHrace(tymy), this);
-        getServer().getPluginManager().registerEvents(new SmrtHrace(tymy, skore, teleportDoLoby, spravaBloku), this);
-        getServer().getPluginManager().registerEvents(new BeaconZnicen(tymy), this);
+        getServer().getPluginManager().registerEvents(new StartHry(stavHry), this);
+        getServer().getPluginManager().registerEvents(new OchranaSpoluhrace(tymy, stavHry), this);
+        getServer().getPluginManager().registerEvents(new OdpocetZakazPohybu(tymy, teleportDoAreny, stavHry), this);
+        getServer().getPluginManager().registerEvents(new RespawnHrace(tymy, stavHry), this);
+        getServer().getPluginManager().registerEvents(new SmrtHrace(tymy, skore, stavHry), this);
+        getServer().getPluginManager().registerEvents(new BeaconZnicen(tymy, stavHry), this);
         getServer().getPluginManager().registerEvents(new BlokPoskozen(), this);
-        getServer().getPluginManager().registerEvents(new BlokPolozen(tymy, spravaBloku), this);
-
+        getServer().getPluginManager().registerEvents(new BlokPolozen(tymy, spravaBloku, stavHry), this);
+        getServer().getPluginManager().registerEvents(new BlockDropEvent(spravaBloku), this);
+        getServer().getPluginManager().registerEvents(new PlayerDropEvent(spravaBloku), this);
 
         //commandy
         getCommand("+vytvorTeleportera").setExecutor(new VytvorTeleportera());
-        getCommand("+konec").setExecutor(new KonecHry(teleportDoLoby, tymy));
+        getCommand("+konec").setExecutor(new KonecHry(stavHry, tymy));
     }
 
 }

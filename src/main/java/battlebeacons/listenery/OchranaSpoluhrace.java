@@ -1,27 +1,26 @@
 package battlebeacons.listenery;
 
 
-import battlebeacons.teleporter.TeleportDoLoby;
+import battlebeacons.StavHry;
 import battlebeacons.tymy.Tymy;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-public class ZraneniHrace extends PlayerDamageByPlayerListener {
+public class OchranaSpoluhrace extends PlayerDamageByPlayerListener {
 
     private final Tymy tymy;
+    private final StavHry stavHry;
 
-    public final TeleportDoLoby teleportDoLoby;
-
-    public ZraneniHrace(Tymy tymy, TeleportDoLoby teleportDoLoby) {
+    public OchranaSpoluhrace(Tymy tymy, StavHry stavHry) {
         this.tymy = tymy;
-        this.teleportDoLoby = teleportDoLoby;
+        this.stavHry = stavHry;
     }
 
     @Override
     public void playerDamaged(Player utocnik, Player zraneny, double damage, EntityDamageByEntityEvent event) {
-        if (!tymy.hraJede()) return;
+        if (!stavHry.isGameRunning()) return;
         if (tymy.spoluhraci(utocnik, zraneny)) {
-           event.setCancelled(true);
+            event.setCancelled(true);
         }
     }
 }
