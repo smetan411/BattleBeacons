@@ -26,4 +26,6 @@ public class RespawnHrace implements Listener {
         event.setRespawnLocation(tym.getSpawnPoint());
 
     }
+
+
 }
