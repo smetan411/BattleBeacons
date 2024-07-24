@@ -26,6 +26,7 @@ public class BeaconZnicen implements Listener {
             if (tym.getBeaconPoint().equals(location)) {
                 tym.setAlive(false);
                 tym.zprava("Vas beacon byl znicen.", "Uz se nesnazte.");
+                event.getBlock().getDrops().clear();
                 return;
             }
         }

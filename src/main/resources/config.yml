@@ -7,18 +7,90 @@
 LobbyLocationStartCorner:
   ==: org.bukkit.Location
   world: world
-  x: -3
-  y: 7
-  z: 6
+  x: -2
+  y: 1
+  z: -2
   pitch: 0
   yaw: 0
 
 LobbyLocationEndCorner:
   ==: org.bukkit.Location
   world: world
-  x: 17
-  y: -4
-  z: -4
+  x: 1
+  y: 1
+  z: 3
+  pitch: 0
+  yaw: 0
+
+ironGenerator1Location:
+  ==: org.bukkit.Location
+  world: world
+  x: 503.5
+  y: 100
+  z: 574.5
+  pitch: 0
+  yaw: 0
+
+ironGenerator2Location:
+  ==: org.bukkit.Location
+  world: world
+  x: 497.5
+  y: 100
+  z: 426.5
+  pitch: 0
+  yaw: 0
+
+ironGenerator3Location:
+  ==: org.bukkit.Location
+  world: world
+  x: 575.5
+  y: 100
+  z: 497.5
+  pitch: 0
+  yaw: 0
+
+ironGenerator4Location:
+  ==: org.bukkit.Location
+  world: world
+  x: 426.5
+  y: 100
+  z: 503.5
+  pitch: 0
+  yaw: 0
+
+goldGenerator1Location:
+  ==: org.bukkit.Location
+  world: world
+  x: 497.5
+  y: 100
+  z: 574.5
+  pitch: 0
+  yaw: 0
+
+goldGenerator2Location:
+  ==: org.bukkit.Location
+  world: world
+  x: 503.5
+  y: 100
+  z: 426.5
+  pitch: 0
+  yaw: 0
+
+goldGenerator3Location:
+  ==: org.bukkit.Location
+  world: world
+  x: 575.5
+  y: 100
+  z: 503.5
+  pitch: 0
+  yaw: 0
+
+goldGenerator4Location:
+  ==: org.bukkit.Location
+  world: world
+  x: 426.5
+  y: 100
+  z: 497.5
   pitch: 0
   yaw: 0
 
@@ -29,7 +101,7 @@ TeamBattleLocation_1:
   y: 100
   z: 570
   pitch: 0
-  yaw: 0
+  yaw: -180
 
 BeaconLocation_1:
   ==: org.bukkit.Location
@@ -70,7 +142,7 @@ TeamBattleLocation_3:
 BeaconLocation_3:
   ==: org.bukkit.Location
   world: world
-  x: 570
+  x: 431
   y: 104
   z: 500
   pitch: 0
@@ -88,8 +160,53 @@ TeamBattleLocation_4:
 BeaconLocation_4:
   ==: org.bukkit.Location
   world: world
-  x: 431
+  x: 570
   y: 104
   z: 500
+  pitch: 0
+  yaw: 0
+
+NetheriteGeneratorLocation:
+  ==: org.bukkit.Location
+  world: world
+  x: 500.5
+  y: 101
+  z: 500.5
+  pitch: 0
+  yaw: 0
+
+emeraldGenerator1Location:
+  ==: org.bukkit.Location
+  world: world
+  x: 508.5
+  y: 100
+  z: 508.5
+  pitch: 0
+  yaw: 0
+
+emeraldGenerator2Location:
+  ==: org.bukkit.Location
+  world: world
+  x: 492.5
+  y: 100
+  z: 492.5
+  pitch: 0
+  yaw: 0
+
+emeraldGenerator3Location:
+  ==: org.bukkit.Location
+  world: world
+  x: 492.5
+  y: 100
+  z: 508.5
+  pitch: 0
+  yaw: 0
+
+emeraldGenerator4Location:
+  ==: org.bukkit.Location
+  world: world
+  x: 508.5
+  y: 100
+  z: 492.5
   pitch: 0
   yaw: 0

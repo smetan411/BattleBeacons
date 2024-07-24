@@ -17,6 +17,7 @@ public class PripojeniDoLobby implements Listener {
     @EventHandler
     public void onConnect(PlayerJoinEvent playerJoinEvent) {
         var player = playerJoinEvent.getPlayer();
+        player.getInventory().clear();
         player.setGameMode(GameMode.ADVENTURE);
         player.teleport(lobby.nahodneMistoVLobby());
     }

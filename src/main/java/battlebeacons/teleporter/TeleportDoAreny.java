@@ -8,6 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
@@ -56,12 +57,7 @@ public final class TeleportDoAreny {
         glassBlock.setType(team.getNastaveniTymu().getBeaconGlass());
     }
 
-    private String getConfigKey(PointType pointType, int teamNumber) {
-        return switch (pointType) {
-            case SPAWN -> TEAM_LOCATION_CONFIG_KEY + teamNumber;
-            case BEACON -> BEACON_LOCATION_CONFIG_KEY + teamNumber;
-        };
-    }
+
 
     private List<Location> nactiPointy(PointType pointType) {
         List<Location> mista = new ArrayList<>();
@@ -77,7 +73,12 @@ public final class TeleportDoAreny {
         }
         return mista;
     }
-
+    private String getConfigKey(PointType pointType, int teamNumber) {
+        return switch (pointType) {
+            case SPAWN -> TEAM_LOCATION_CONFIG_KEY + teamNumber;
+            case BEACON -> BEACON_LOCATION_CONFIG_KEY + teamNumber;
+        };
+    }
     public boolean jeOdpocet() {
         if (odpocet == null) return false;
         return odpocet.jeOdpocet();

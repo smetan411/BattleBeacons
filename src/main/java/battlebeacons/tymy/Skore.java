@@ -23,6 +23,12 @@ public final class Skore {
         pocatecniUpdate();
     }
 
+    private void updateScore(Tym tym, Score score) {
+        score.setScore((int) tym.getHraci().stream()
+                .filter(hrac -> hrac.getGameMode() != GameMode.SPECTATOR)
+                .count());
+
+    }
     public void pocatecniUpdate() {
         Objective objective = scoreboard.registerNewObjective("Skore", "dummy", "Tymy");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
@@ -48,10 +54,5 @@ public final class Skore {
         }
     }
 
-    private void updateScore(Tym tym, Score score) {
-        score.setScore((int) tym.getHraci().stream()
-                .filter(hrac -> hrac.getGameMode() != GameMode.SPECTATOR)
-                .count());
 
-    }
 }

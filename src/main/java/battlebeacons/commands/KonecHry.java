@@ -21,6 +21,8 @@ public class KonecHry extends OperatorCommandExecutor {
         if (!stavHry.isGameRunning()) return true;
         tymy.vratTymy().forEach(tym -> tym.zprava("Konec hry", "OP ukoncil hru"));
         stavHry.stopGame();
+        operator.chat("/kill @e[type=minecraft:armor_stand]");
+        operator.chat("/kill @e[type=minecraft:item]");
         return true;
     }
 }

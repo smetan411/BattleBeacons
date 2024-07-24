@@ -1,13 +1,12 @@
 package battlebeacons.factory;
 
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 
 public class Weapons {
 
     public ItemStack sword() {
-        var mec = new ItemStack(Material.IRON_SWORD, 1);
+        var mec = new ItemStack(Material.STONE_SWORD, 1);
         return mec;
     }
 
@@ -16,19 +15,8 @@ public class Weapons {
         return stit;
     }
 
-    public ItemStack bow() {
-        var luk = new ItemStack(Material.BOW, 1);
-        luk.addEnchantment(Enchantment.ARROW_INFINITE, 1);
-        return luk;
-    }
-
-    public ItemStack arrow() {
-        var sip = new ItemStack(Material.ARROW, 1);
-        return sip;
-    }
-
     public ItemStack axe() {
-        var axe = new ItemStack(Material.IRON_AXE, 1);
+        var axe = new ItemStack(Material.WOODEN_AXE, 1);
         return axe;
     }
 

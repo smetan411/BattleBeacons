@@ -3,18 +3,16 @@ package battlebeacons.listenery;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Item;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 public final class SpravaBloku {
-    public static Set<Material> POVOLENE_BLOKY = Set.of(Material.BLACK_WOOL, Material.BEACON);
-    private final List<Block> polozeneBloky = new ArrayList<>();
-    private final List<Item> odhozeneVeci = new ArrayList<>();
+    public static Set<Material> POVOLENE_BLOKY = Set.of(Material.BLACK_WOOL, Material.END_STONE, Material.LAVA, Material.POWDER_SNOW);
+    private final Set<Block> polozeneBloky = new HashSet<>();
+    private final Set<Item> odhozeneVeci = new HashSet<>();
 
-    public static boolean jeBlokZakazany(Material material) {
-        return !POVOLENE_BLOKY.contains(material);
+    public static boolean jeBlokPovoleny(Material material) {
+        return POVOLENE_BLOKY.contains(material);
     }
 
     public void add(Block block) {
@@ -37,5 +35,9 @@ public final class SpravaBloku {
             item.remove();
         }
         odhozeneVeci.clear();
+    }
+
+    public boolean jeBlokPolozenyVeHre(Block blok) {
+        return polozeneBloky.contains(blok);
     }
 }
