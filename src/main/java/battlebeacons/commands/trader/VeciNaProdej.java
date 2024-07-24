@@ -111,18 +111,18 @@ public class VeciNaProdej {
 
     public ItemStack zeleznyMec(){
         var mec = new ItemStack(Material.IRON_SWORD);
-        mec.addEnchantment(Enchantment.DAMAGE_ALL, 1);
+       mec.addEnchantment(Enchantment.SHARPNESS, 1);
         return mec;
     }
 
     public ItemStack diamantovyMec(){
         var mec = new ItemStack(Material.DIAMOND_SWORD);
-        mec.addEnchantment(Enchantment.DAMAGE_ALL, 2);
+       mec.addEnchantment(Enchantment.SHARPNESS, 2);
         return mec;
     }
     public ItemStack netheritovyMec(){
         var mec = new ItemStack(Material.NETHERITE_SWORD);
-        mec.addEnchantment(Enchantment.DAMAGE_ALL, 3);
+       mec.addEnchantment(Enchantment.SHARPNESS, 3);
         return mec;
     }
 
@@ -143,27 +143,27 @@ public class VeciNaProdej {
 
     public ItemStack luk() {
         var luk = new ItemStack(Material.BOW);
-        luk.addEnchantment(Enchantment.ARROW_DAMAGE, 1);
+        luk.addEnchantment(Enchantment.POWER, 1);
         return luk;
     }
 
     public ItemStack silnyLuk() {
         var luk = new ItemStack(Material.BOW);
-        luk.addEnchantment(Enchantment.ARROW_DAMAGE, 4);
+       luk.addEnchantment(Enchantment.POWER, 4);
         return luk;
     }
 
     public ItemStack odhazujiciLuk() {
         var luk = new ItemStack(Material.BOW);
-        luk.addEnchantment(Enchantment.ARROW_DAMAGE, 2);
-        luk.addEnchantment(Enchantment.ARROW_KNOCKBACK, 2);
+       luk.addEnchantment(Enchantment.POWER, 2);
+       luk.addEnchantment(Enchantment.KNOCKBACK, 2);
         return luk;
     }
 
     public ItemStack nekonecnyLuk() {
         var luk = new ItemStack(Material.BOW);
-        luk.addEnchantment(Enchantment.ARROW_DAMAGE, 2);
-        luk.addEnchantment(Enchantment.ARROW_INFINITE, 1);
+        luk.addEnchantment(Enchantment.POWER, 2);
+       luk.addEnchantment(Enchantment.INFINITY, 1);
         return luk;
     }
 
@@ -185,7 +185,7 @@ public class VeciNaProdej {
         var sip = new ItemStack(Material.TIPPED_ARROW, 5);
         PotionMeta meta = (PotionMeta) sip.getItemMeta();
         meta.addCustomEffect(new PotionEffect(PotionEffectType.BLINDNESS, 180,1), true);
-        meta.addCustomEffect(new PotionEffect(PotionEffectType.CONFUSION, 100,1), true); //motani hlavy
+       meta.addCustomEffect(new PotionEffect(PotionEffectType.NAUSEA, 100,1), true); //motani hlavy
         meta.setColor(Color.GRAY);
         ItemMeta itemMeta = (ItemMeta) meta;
         sip.setItemMeta(itemMeta);
