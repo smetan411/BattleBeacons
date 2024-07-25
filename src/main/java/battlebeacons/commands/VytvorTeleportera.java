@@ -18,13 +18,6 @@ public class VytvorTeleportera extends OperatorCommandExecutor {
         var teleporter = world.spawn(operator.getLocation(), Villager.class);
         teleporter.setAI(false);
         teleporter.setCustomName(TeleportDoAreny.JMENO_TELEPORTERA);
-
-        ItemStack potion = new ItemStack(Material.POTION);
-        PotionMeta meta = (PotionMeta) potion.getItemMeta();
-        meta.setBasePotionData(new PotionData(PotionType.INVISIBILITY));
-        potion.setItemMeta(meta);
-        operator.getInventory().addItem(potion);
-
         return true;
     }
 }
