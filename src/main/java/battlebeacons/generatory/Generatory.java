@@ -27,8 +27,10 @@ public final class Generatory {
         generatory.clear();
     }
 
+    //načte generátory z konfiguračního souboru
     public void loadFromConfig() {
-        var config = plugin.getConfig();
+        var config = plugin.getConfig();//získá konfiguraci pluginu config.yml
+        //každý řádek vezme souřadnice s z config.yml s klíčem
         add(createIronGenerator(config.getLocation("ironGenerator1Location")));
         add(createIronGenerator(config.getLocation("ironGenerator2Location")));
         add(createIronGenerator(config.getLocation("ironGenerator3Location")));

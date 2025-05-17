@@ -9,10 +9,12 @@ import org.bukkit.entity.Villager;
 public class VytvorTeleportera extends OperatorCommandExecutor {
 
     @Override
-    boolean onCommand(Player operator, World world, Command command, String s, String[] args) {
-        var teleporter = world.spawn(operator.getLocation(), Villager.class);
+    boolean onCommand(Player player, World world, Command command, String s, String[] args) {
+        if (!player.isOp()) return false;
+        var teleporter = world.spawn(player.getLocation(), Villager.class);
         teleporter.setAI(false);
         teleporter.setCustomName(TeleportDoAreny.JMENO_TELEPORTERA);
         return true;
     }
+
 }

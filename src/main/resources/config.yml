@@ -137,7 +137,7 @@ TeamBattleLocation_3:
   y: 100
   z: 500
   pitch: 0
-  yaw: 0
+  yaw: 90
 
 BeaconLocation_3:
   ==: org.bukkit.Location
@@ -155,7 +155,7 @@ TeamBattleLocation_4:
   y: 100
   z: 500
   pitch: 0
-  yaw: 0
+  yaw: -90
 
 BeaconLocation_4:
   ==: org.bukkit.Location

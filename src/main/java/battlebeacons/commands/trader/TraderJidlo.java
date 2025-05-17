@@ -25,6 +25,7 @@ public class TraderJidlo implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!sender.isOp()) return false;
         if (!(sender instanceof Player)) return false;
         var player = (Player) sender;
 

@@ -4,11 +4,13 @@ package battlebeacons.listenery;
 import battlebeacons.StavHry;
 import battlebeacons.teleporter.TeleportDoAreny;
 import battlebeacons.timelimit.TimeLimit;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class StartHry implements Listener {
 
@@ -30,6 +32,9 @@ public class StartHry implements Listener {
             if (!player.isOp()) return;
             stavHry.startGame();
             timeLimit.start();
+            for(Player player1: Bukkit.getOnlinePlayers()){
+                player1.getEnderChest().clear();
+            }
         }
     }
 }

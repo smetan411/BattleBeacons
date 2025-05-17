@@ -1,10 +1,12 @@
 name: BattleBeacons
 version: '${project.version}'
 main: battlebeacons.Main
-api-version: 1.18
+api-version: 1.21
 
 commands:
   +vytvorTeleportera:
   +konec:
   +vytvorTraderaJidlo:
   +vytvorTraderaZbrane:
+  +vytvorIronGenerator:
+  +vytvorGoldGenerator:

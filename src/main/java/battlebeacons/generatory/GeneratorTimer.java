@@ -40,8 +40,9 @@ public final class GeneratorTimer implements Runnable {
             spravaBloku.add(item);
             odpocet = cas;
         } else {
+            //aktualizace jména + čas zbývající do dropnutí další položky
             nameableEntity.setCustomName(jmeno + " " + odpocet);
-            nameableEntity.getLocation().getChunk().load();
+            nameableEntity.getLocation().getChunk().load();//pro stabilitu časovače
             nameableEntity.setCustomNameVisible(true);
             odpocet--;
         }
