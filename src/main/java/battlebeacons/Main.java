@@ -41,7 +41,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new StartHry(stavHry, timeLimit), this);
         getServer().getPluginManager().registerEvents(new OchranaSpoluhrace(tymy, stavHry), this);
         getServer().getPluginManager().registerEvents(new OdpocetZakazPohybu(tymy, teleportDoAreny, stavHry), this);
-        getServer().getPluginManager().registerEvents(new RespawnHrace(tymy, stavHry), this);
+        getServer().getPluginManager().registerEvents(new RespawnHrace(tymy, stavHry, this), this);
         getServer().getPluginManager().registerEvents(new SmrtHrace(tymy, skore, stavHry), this);
         getServer().getPluginManager().registerEvents(new BeaconZnicen(tymy, stavHry), this);
         getServer().getPluginManager().registerEvents(new BlokPoskozen(spravaBloku), this);

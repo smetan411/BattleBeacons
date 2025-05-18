@@ -63,7 +63,7 @@ public final class Lobby {
         var min = Math.min(point1, point2);
         var max = Math.max(point1, point2);
         Random random = new Random();
-        return random.nextDouble(min, max);
+        return random.nextDouble(min, max + 1);
     }
 
     public List<Player> hraciVLobby() {

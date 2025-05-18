@@ -76,7 +76,7 @@ public final class SmrtHrace implements Listener {
         List<Tym> tymySZivymi = new ArrayList<>();
         for (var tym : tymy.vratTymy()) {
             boolean zivyHracVTeamu = tym.getHraci().stream().anyMatch(hrac -> hrac.getGameMode() != GameMode.SPECTATOR);
-            if (zivyHracVTeamu) {
+            if (zivyHracVTeamu || tym.isAlive()) {
                 tymySZivymi.add(tym);
             }
         }
